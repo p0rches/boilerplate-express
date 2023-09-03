@@ -11,19 +11,21 @@ app.get("/", function(req, res) {
   res.sendFile(path);
 });
 
-let obj = {
-  message: "Hello json",
-};
+//let obj = {
+//  message: "Hello json",
+//};
 
-app.get("/json", (req, res) => {
-  if (process.env.MESSAGE_STYLE == "uppercase") {
-    obj.message = obj.message.toUpperCase();
-  }
-  res.json(obj);
+//app.get("/json", (req, res) => {
+//  if (process.env.MESSAGE_STYLE == "uppercase") {
+//    obj.message = obj.message.toUpperCase();
+//  }
+//  res.json(obj);
+//});
+
+app.use("/", (req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
 });
-
-
-
 
 
 
